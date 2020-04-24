@@ -1,0 +1,57 @@
+<html>
+   <head>
+
+   </head>
+
+   <body>
+
+      <form>
+        Brand: <input type="text" placeholder="Enter Brand" id="brand"><br><br>
+        Type: <input type="text" placeholder="Enter Type" id="type"><br><br>
+        Quantity: <input type="text" placeholder="Enter Quantity" id="quantity"><br><br>
+        Organic: <input type="text" placeholder="Yes or No" id="organic"><br><br>
+        Comment: <textarea id="comment"></textarea><br><br>
+        <button onclick="addSubmit()">Submit</button>
+      </form>
+
+      <ul id="Products">
+
+      </ul>
+
+         <script>
+            var allProducts=[];
+           function addSubmit(){
+              event.preventDefault();
+               var brand=document.getElementById('brand').value;
+               var type= document.getElementById('type').value;
+               var quantity= document.getElementById('quantity').value;
+               var organic= document.getElementById('organic').value;
+               var comment= document.getElementById('comment').value;
+
+               var submit= {
+                     brand: brand,
+                     type: type,
+                     quantity:quantity,
+                     organic: organic,
+                     comment:comment,
+               }
+
+               console.log(submit);
+               allProducts.push(submit);
+               showProducts();
+
+           }
+
+           function showProducts(){
+                    var products=document.getElementById('Products');
+                    products.innerHTML="";
+                  for(var i=0;i<allProducts.length;i++){
+                     var submit=allProducts[i];
+                         products.innerHTML=products.innerHTML+"<li>"+submit.brand+" "+submit.type+" "+submit.quantity+" "+submit.organic+" "+submit.comment+"</li>";
+                  }
+           }
+         
+         </script>
+
+   </body>
+</html>
